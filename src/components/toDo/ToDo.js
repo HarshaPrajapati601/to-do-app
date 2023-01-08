@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
-import { ToDoListContext, ToDoListProvider } from "../../context";
+import React from "react";
+import {  ToDoListProvider } from "../../context";
 import ToDoComponent from "./ToDoComponent";
 
 const ToDo = () => {
-  const context = useContext(ToDoListContext);
-  console.log("context value is ", context)
 
   return (
     <ToDoListProvider>
