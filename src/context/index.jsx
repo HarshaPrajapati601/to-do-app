@@ -1,20 +1,43 @@
-import React, { Component } from "react";
+import { Component, createContext } from "react";
 
-const ToDoListContext = React.createContext();
+// interface AppContextInterface {
+//   list: string[],
+//   currentTodo: String,
+//   onClickAdd: () => void,
+//   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>, id: string, status: string) => void,
+//   onDelete: (list: string[]) => void
+// }
+// interface toDoState {
+//   toDoList: string[],
+//   listPresent: Boolean,
+//   currentTodo: String,
+//    title: String
+// }
+
+const ToDoListContext = createContext();
 
 class ToDoListProvider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+ state = {
       toDoList: [],
       listPresent: true,
-      currentTodo: {}, //id: "aeee438f-6f43-4460-87c1-cbf65734635c"
-    //   status: "incomplete"
-    //   time: "08/01/2023, 12:58:57"
-    //   title: "Buy dress"
+      currentTodo: '',
+       title: "Buy dress",
+       optionsList: [
+        { value: "red", label: "Red" },
+        { value: "green", label: "Green" },
+        { value: "yellow", label: "Yellow" },
+        { value: "blue", label: "Blue" },
+        { value: "white", label: "White" }
+      ],
+      selectedOptions: ''
     };
+  
+  onHandleSelect = (value) => {
+    debugger
+  this.setState({
+  selectedOptions: value
+})
   }
-
 
 
   onClickAdd = () => {
@@ -43,10 +66,12 @@ class ToDoListProvider extends Component {
         value={{
           list: this.state.toDoList,
           currentTodo: this.state.currentTodo,
-          isPresent: this.state.listPresent,
           onClickAdd: this.onClickAdd,
           onChangeInput: this.onChangeInput,
           onDelete: this.onDelete,
+          optionsList: this.state.optionsList,
+          selectedOptions: this.state.selectedOptions,
+          handleSelect: this.onHandleSelect
         }}
       >
         {this.props.children}

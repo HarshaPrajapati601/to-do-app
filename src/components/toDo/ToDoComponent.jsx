@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import ToDoDisplay from "./ToDoDisplay";
 import ToDoInput from "./ToDoInput";
 import { ToDoListContext } from "../../context";
+import SearchBar from "../SearchBar";
+
 
 const pageStyles = {
   Container: {
@@ -34,9 +36,9 @@ const ToDoComponent = () => {
   console.log("context value is ", context)
 
   return (
-    <>
+    <div>
       <ToDoInput />
-      {context.list.length > 0 ? (
+      {context?.list.length > 0 ? (
         <div style={pageStyles.Container}>
           <ToDoDisplay />
         </div>
@@ -45,7 +47,8 @@ const ToDoComponent = () => {
           <p>No task list found</p>
         </div>
       )}
-    </>
+      <SearchBar />
+    </div>
   );
 };
 

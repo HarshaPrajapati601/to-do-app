@@ -5,7 +5,7 @@ const pageStyles = {
     Container: {
       display: "flex",
       flexDirection: "row",
-      justifyContent: 'flex-start',
+      justifyContent: 'space-evenly',
       padding: 20,
       backgroundColor: 'lightgray',
       height: 60
@@ -16,8 +16,9 @@ const Header = () =>{
 
     return(
         <div style={pageStyles.Container}>
-            <Link style={{paddingRight: 50}}  to="/">Home</Link>
+            <Link  to="/">Home</Link>
             <Link to="/todo">To dos</Link>
+            <Link to="/search">Movies</Link>
         </div>
     )
 
